@@ -1,0 +1,49 @@
+*/
+
+Identfying potentially risky transactions
+
+/*
+
+
+-- Identifying the column names--
+
+Select *
+from transaction_data
+limit 5;
+
+
+-- Retrieve the names and emails of the transactions listing 20252 as the zip code --
+Select full_name, email
+from transaction_data
+Where zip = 41015;
+
+--Retrieve the names and emails associated with risky transactions using a full name and partial middle name--
+
+Select full_name, email
+from transaction_data
+Where full_name = 'Bob Tykes' or full_name like '% sam %';
+
+--Retrieve the ip addresses and emails listed with ip addresses that begin with 10--
+
+Select ip_address, email
+from transaction_data
+Where ip_address like '10.%';
+
+--Locate the emails with temp_email.com as a domain--
+
+Select email, full_name
+from transaction_data
+Where email like '%temp_email.com';
+
+--Identify a specific transaction that occurred from an ip address starting with 120 and the name starts with Mike-
+
+select *
+from transaction_data
+where ip_address like '120.%' and 
+full_name like 'Mike%';
+
+-- Return only those customers residing in Georgia--
+
+Select full_name, email,zip
+from transaction_data
+where zip like '30%' or zip like '31%';
