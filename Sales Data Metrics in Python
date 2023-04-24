@@ -1,0 +1,42 @@
+#Calculate sales data metrics
+#Indexes
+hairstyles = ["bouffant", "pixie", "dreadlocks", "crew", "bowl", "bob", "mohawk", "flattop"]
+
+prices = [30, 25, 40, 20, 20, 35, 50, 35]
+
+last_week = [2, 3, 5, 8, 4, 4, 6, 2]
+
+#Create a varaible
+total_price = 0
+
+#Create a loop
+for price in prices:
+  total_price = total_price + price
+
+#Create a new variable to determine the average price
+average_price = total_price/len(prices)
+
+print('Average Haircut Price: $',average_price)
+
+#Use list comprehension to change lower the prices by $5
+new_prices = [price -5 for price in prices]
+
+
+#Create a variable to calculate revenue
+total_revenue = 0
+
+#Use a for loop to calculate price multiplied by number of people
+for i in range(len(hairstyles)):
+  total_revenue+= prices [i] * last_week [i]
+print('Total Revenue: $',total_revenue)
+  
+#Calculate average daily revenue
+average_daily_revenue = total_revenue/7
+
+print('Average Daily Revenue: $',average_daily_revenue)
+
+#Use list comprehension to create a customized list
+cuts_under_30 = [hairstyles [i] for i in range(len(hairstyles)) if prices[i] < 30]
+
+#Print
+print('Haircuts under 30: ',cuts_under_30)
