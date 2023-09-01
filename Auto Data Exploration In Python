@@ -1,0 +1,71 @@
+# Importing pandas 
+
+import pandas as pd
+vehicles = pd.read_csv('vehicles.csv')
+vehicles.head()
+
+#Sorting vehicles by fuel (ascending)
+
+vehicles =vehicles.sort_values(by='fuel')
+vehicles.head()
+
+#Sorting vehicles by best mpg from highest to lowest. Selecting the first 25 rows and the columns from year through vehicle type
+
+vehicles = vehicles.sort_values(by='best_mpge',ascending= False)
+first_25 = vehicles.iloc[0:25,2:6] 
+first_25.head(25)
+
+#Sorting vehicles by fuel from A to Z, and then for each fuel by best_mpge from highest to lowest.
+
+fuel_vehicles = vehicles.sort_values(by='fuel')
+mpg = fuel_vehicles.sort_values(by='best_mpge',ascending = False)
+mpg.head()
+
+#Checking if 'auto' is equal to 'manual'
+
+'auto'=='manual'
+
+#Creating a Boolean mask that is True whenever transmission is manual
+
+is_equal_to = vehicles['transmission'] == 'manual'
+
+#Using the Boolean mask to filter vehicles down to only manual transmission vehicles. Assigned the result to the variable manual.
+
+manual = vehicles[is_equal_to]
+manual.head()
+
+#Creating a count of manual transmission vehicles by year. Sorting the result by year from earliest to latest. 
+
+is_equal_to = vehicles['transmission'] == 'manual'
+manual = vehicles[is_equal_to]
+manual.sort_values(by = 'year')
+
+#Vehicle count per year
+
+vehicles['year'].value_counts()
+
+#Identifying the different types of transmissions
+
+vehicles['transmission'].value_counts()
+
+#Creating a Boolean mask that is True when vehicle_type is suv or pickup. Filtering vehicles down to only the True rows.
+
+is_suv = vehicles['vehicle_type'] == 'suv'
+is_pickup = vehicles['vehicle_type'] == 'pickup'
+combined = is_suv | is_pickup
+vehicles[combined]
+
+#Creating a Boolean mask that is True when vehicle_type is neither suv nor pickup. Filtering vehicles down to only the True rows.
+
+is_suv = vehicles['vehicle_type'] == 'suv'
+is_pickup = vehicles['vehicle_type'] == 'pickup'
+combined = ~is_suv & ~is_pickup
+vehicles[combined]
+
+#Creating a Boolean mask that is True whenever fuel is hybrid electric and best_mpge is below average (less than 40). Filtering vehicles down to only the rows that are True
+
+is_electric = vehicles['fuel'] == 'hybrid electric'
+is_not_40 = vehicles['best_mpge'] < 40 
+combined = is_electric & is_not_40
+vehicles[combined]
+
