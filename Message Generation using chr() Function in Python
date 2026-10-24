@@ -1,0 +1,24 @@
+inp = [71,111,130,32,66,108,117,127,101,33,256,71,111,1032,66,108,117,127,101]
+#Concatenating Strings, Using the chr() function, while in a loop
+message = ""
+index = 0
+while index < len(inp):
+    number = inp[index]
+    index += 1
+
+
+for number in inp:
+  if number > 255:
+        break
+
+  elif number < 33:
+    print(f"Skipped {number}")
+    continue
+  elif number > 126:
+    print(f"Skipped {number}")
+    continue
+
+  else:
+   message += chr(number)
+
+print(f'The message is {message}')
