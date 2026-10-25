@@ -1,0 +1,10 @@
+cars = ['bmw','toyota','honda','chevy','kia','ford']
+
+new_List = []
+while cars:
+  element = things.pop(0)
+  if element == 'honda' or element == 'Honda':
+      break
+  new_List.append(element) 
+        
+print(new_List)
